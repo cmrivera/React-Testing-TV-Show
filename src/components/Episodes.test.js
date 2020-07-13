@@ -4,15 +4,7 @@ import { render } from "@testing-library/react";
 
 test("re-renders correctly with episodes", () => {
   const { rerender, queryAllByTestId } = render(<Episodes episodes={[]} />);
-  const episodes = queryAllByTestId(/episode/gi); //episodes because queryAll returns an array
-  //expect(episodes.length).toBeLessThanOrEqual(0);//todo: why does this test fail?
-  //expect(episodes).toStrictEqual([]);//todo: this test fails, expected [], received Array [
-  //     +   <div
-  //     +     class="episodes"
-  //     +     data-testid="episodes"
-  //     +   />,
-  //     + ]
-  //???How did the queryAllByTestId(/episode/ig) return the div for Episodes?
+  const episodes = queryAllByTestId(/episode/gi);
 
   rerender(<Episodes episodes={mockData} />);
   const newEpisodes = queryAllByTestId(/episode/gi);
@@ -63,21 +55,3 @@ const mockData = [
     _links: { self: { href: "http://api.tvmaze.com/episodes/1576473" } },
   },
 ];
-
-/*
-test("re-renders correctly with missions list", () => {
-    //Arrange
-    const {rerender, queryAllByTestId, getAllByTestId} = render(<MissionsList missions={[]}/>);
-    //check that there are no missions rendered yet
-    const missions = queryAllByTestId(/missionDiv/i);
-    expect(missions.length).toBeLessThanOrEqual(0);
-    expect(missions).toStrictEqual([]);
-    //Act
-    //simulate clicking get data and making an api call
-    rerender(<MissionsList error={false} missions={mockData}/>);
-    let newMissions = getAllByTestId(/missiondiv/i);
-    //Assert
-    //make sure however many objs we gave render
-    expect(newMissions).toHaveLength(10);
-});
- */

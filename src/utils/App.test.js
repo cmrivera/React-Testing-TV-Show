@@ -81,29 +81,10 @@ test("Renders app and tests components", async () => {
   mockFetchShow.mockResolvedValueOnce(mockData);
   const { rerender, getByTestId, getAllByTestId } = render(<App />);
 
-  await getAllByTestId(/moviePoster/i);
+  /* await getAllByTestId(/moviePoster/i);
   const moviePoster = getAllByTestId(/moviePoster/i);
   await expect(moviePoster).toHaveLength(1);
 
   const dropdown = getByTestId(/dropdown/i);
-  fireEvent.click(dropdown);
+  fireEvent.click(dropdown);*/
 });
-
-/*
-test("Renders app and tests it", async () => {
-mockFetchMissions.mockResolvedValueOnce(missions);
-const {rerender, getByRole, findByText, getAllByTestId} = render(<App/>);
-const button = getByRole("button", {name: /get data/i});
-//click on the button
-//fetching message rendered
-//api call initiated
-//for tv project use userEvent instead of fireEvent
-fireEvent.click(button);
-await findByText(/we are fetching data/i);
-//component waits for api, then renders data that is returned
-//use the waitfor to wait for the api call to resolve
-await waitFor(()=>{
-expect(getAllByTestId(/mission/i)).toHaveLength(10);
-});
-});
-*/
