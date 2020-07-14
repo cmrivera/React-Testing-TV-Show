@@ -2,15 +2,6 @@ import React from "react";
 import Episodes from "./Episodes";
 import { render } from "@testing-library/react";
 
-test("re-renders correctly with episodes", () => {
-  const { rerender, queryAllByTestId } = render(<Episodes episodes={[]} />);
-  const episodes = queryAllByTestId(/episode/gi);
-
-  rerender(<Episodes episodes={mockData} />);
-  const newEpisodes = queryAllByTestId(/episode/gi);
-  expect(newEpisodes).toHaveLength(2);
-});
-
 const mockData = [
   {
     id: 553946,
@@ -55,3 +46,13 @@ const mockData = [
     _links: { self: { href: "http://api.tvmaze.com/episodes/1576473" } },
   },
 ];
+
+test("re-renders correctly with episodes", () => {
+  const { rerender, queryAllByTestId } = render(<Episodes episodes={[]} />);
+  const episodes = queryAllByTestId("episode");
+  expect(episodes).toHaveLength(0);
+
+  rerender(<Episodes episodes={mockData} />);
+  const newEpisodes = queryAllByTestId("episode");
+  expect(newEpisodes).toHaveLength(2);
+});
